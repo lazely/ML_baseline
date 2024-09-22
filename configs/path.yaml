@@ -1,0 +1,10 @@
+data:
+  train_dir: "./data/train"
+  train_info_file: "./data/train.csv"
+  test_dir: "./data/test"
+  test_info_file: "./data/test.csv"
+  augmented_dir: "./data/augmented"
+  augmented_info_file: "./data/augmented.csv"
+  split_dir: "./data/split"
+  train_alpha_dir: "./data/train_alpha"
+  train_alpha_info_file: "./data/train_alpha_info.csv"

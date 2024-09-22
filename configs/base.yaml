@@ -1,0 +1,11 @@
+mode: "train"  # train / test / augmentation
+random_seed: 20010316
+device: "cuda"
+
+wandb:
+  user_name: "jm"
+  team_name: "gaemanssi2-naver-ai-boostcamp"
+
+paths:
+  save_dir: "./outputs/saved_models"
+  output_dir: "./outputs/"
