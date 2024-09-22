@@ -5,7 +5,10 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 import random
 import numpy as np
 
-from src.train import *
+from src import train
+from src import test 
+from src import optimization
+from src import augmentation
 
 def set_random_seed(seed):
     random.seed(seed)
@@ -40,6 +43,8 @@ if __name__ == "__main__":
         test.run(config)
     elif mode == 'augmentation':
         augmentation.run(config)
+    elif mode == 'hyperparameter_tune':
+        optimization.run(config)
     else:
         raise ValueError(f"Invalid mode: {mode}")
 

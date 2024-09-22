@@ -1,4 +1,5 @@
-mode: "train"  # train / test / augmentation
+mode: "train"  
+# train / test / augmentation / hyperparameter_tune
 random_seed: 20010316
 device: "cuda"
 

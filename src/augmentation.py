@@ -40,7 +40,7 @@ def process_image(row, config, augmentations):
     
     return new_rows
 
-def perform_offline_augmentation(config):
+def run(config):
     train_info_file = config['data']['train_info_file']
     augmented_info_file = config['data']['augmented_info_file']
     

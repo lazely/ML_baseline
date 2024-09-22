@@ -1,5 +1,4 @@
 training:
-  mode: "train"
   batch_size: 16
   validation_ratio: 0.2
   num_epochs: 50
