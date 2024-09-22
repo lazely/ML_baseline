@@ -68,9 +68,14 @@ class CustomDataset(Dataset):
             img_path = os.path.join(self.augmented_dir, self.all_image_paths[index])
         else:
             img_path = os.path.join(self.root_dir, self.all_image_paths[index])
+        
         image = cv2.imread(img_path, cv2.IMREAD_COLOR)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        image = self.transform(image)
+        
+        if self.transform:
+            augmented = self.transform(image=image)
+            image = augmented['image']
+        
         if self.is_inference:
             return image
         else:

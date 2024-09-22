@@ -1,8 +1,8 @@
-import train
+from src import train
 import optuna
 from optuna.samplers import TPESampler
 
-from utils.params import get_params
+from src.utils.params import get_params
 
 def objective(trial):
     config = get_params(trial=trial)

@@ -1,6 +1,5 @@
 import sys
 from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -9,8 +8,8 @@ import torch.nn.functional as F
 
 import os
 import pandas as pd
-from models.model_utils import get_model
-from utils.data_loaders import get_test_loaders
+from src.models.model_utils import get_model
+from src.utils.data_loaders import get_test_loaders
 
 def run(config):
     device = torch.device(config['training']['device'])

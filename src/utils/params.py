@@ -4,7 +4,6 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 import yaml
 from optuna.samplers import TPESampler
-from scripts import train
 
 
 def get_params(config, trial=None):

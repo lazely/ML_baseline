@@ -89,7 +89,7 @@ def get_data_loaders(config, batch_size=None):
         augmented_dir=config['data']['augmented_dir'],  # 오프라인 증강 이미지 디렉토리 사용
         augmented_info_file=config['data']['augmented_info_file'],  # 오프라인 증강 정보 파일 사용
         transform=get_transform(config, is_train=True),  # 증강 적용
-        use_augmented=True  # 오프라인 증강 이미지 포함
+        use_augmented=False  # 오프라인 증강 이미지 포함
     )
     
     val_dataset = CustomDataset(

@@ -19,7 +19,7 @@ def set_random_seed(seed):
 
 def get_config():
     config = {}
-    config_files = ['base.yaml', 'data_model.yaml', 'training.yaml', 'augmentation_optimization.yaml']
+    config_files = ['base.yaml', 'optimization.yaml', 'train.yaml', 'path.yaml']
     for file in config_files:
         with open(f'configs/{file}', 'r') as f:
             config.update(yaml.safe_load(f))
@@ -31,10 +31,10 @@ def get_config():
 
 
 if __name__ == "__main__":
-    config = get_config('base')
+    config = get_config()
 
 
-    set_random_seed[config['random_seed']]
+    set_random_seed(config['random_seed'])
     mode = config['mode']
 
     if mode == 'train':

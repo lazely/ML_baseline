@@ -5,7 +5,7 @@ from tqdm import tqdm
 from functools import partial
 from concurrent.futures import ThreadPoolExecutor
 
-from utils.aug_utils import get_augmentation, apply_augmentation, create_augmented_image_name 
+from src.utils.aug_utils import get_augmentation, apply_augmentation, create_augmented_image_name 
 
 def process_image(row, config, augmentations):
     train_dir = config['data']['train_dir']

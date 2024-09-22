@@ -7,11 +7,11 @@ import numpy as np
 import datetime
 import uuid
 import os 
-from utils.trainer import train_one_epoch, validate
-from utils.params import get_params
+from src.utils.trainer import train_one_epoch, validate
+from src.utils.params import get_params
 from src.utils.data_loaders import get_data_loaders
-from utils.metrics import get_metric_function
-from models.model_utils import *
+from src.utils.metrics import get_metric_function
+from src.models.model_utils import *
 
 def get_wandb_config(config):
 
@@ -19,8 +19,8 @@ def get_wandb_config(config):
         "model_name": config['model']['name'],
         "batch_size": config['training']['batch_size'],
         "learning_rate": config['training']['learning_rate'],
-        "optimizer": config['training']['optimizer']['name'],
-        "weight_decay": config['training']['optimizer']['weight_decay'],
+        "optimizer": config['training']['optimizer'],
+        "weight_decay": config['training']['weight_decay'],
         "lr_scheduler": config['training']['lr_scheduler']['name'],
     }
     return wandb_config
@@ -40,7 +40,7 @@ def run(config, trial_number=None):
     # wandb 초기화
     wandb.init(project=project_name, entity=team_name, config=wandb_config)
 
-    device = torch.device(config['training']['device'])
+    device = torch.device(config['device'])
     model = get_model(config).to(device)
 
     train_loader, val_loader = get_data_loaders(config, batch_size=config['training']['batch_size'])
