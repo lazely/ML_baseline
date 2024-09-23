@@ -14,6 +14,7 @@ hyperparameter_optimization:
     weight_decay:
       min: 1e-5
       max: 1e-5
+      type: "log_uniform"
     num_epochs: 
       min: 5
       max: 20

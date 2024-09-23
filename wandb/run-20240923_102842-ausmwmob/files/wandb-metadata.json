@@ -1,0 +1,32 @@
+{
+  "os": "Windows-10-10.0.22631-SP0",
+  "python": "3.10.14",
+  "startedAt": "2024-09-23T01:28:42.062850Z",
+  "program": "c:\\Users\\HaeGang\\Desktop\\College\\ML_baseline\\main.py",
+  "codePath": "main.py",
+  "git": {
+    "remote": "https://github.com/lazely/ML_baseline.git",
+    "commit": "85f8bd63394cec68b94a5b2c64ed24bd98024272"
+  },
+  "email": "ihaegang1@gmail.com",
+  "root": "C:\\Users\\HaeGang\\Desktop\\College\\ML_baseline",
+  "host": "DESKTOP-42T9LQU",
+  "username": "HaeGang",
+  "executable": "C:\\Users\\HaeGang\\anaconda3\\envs\\ml\\python.exe",
+  "codePathLocal": "main.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "disk": {
+    "/": {
+      "total": "999310749696",
+      "used": "555056144384"
+    }
+  },
+  "memory": {
+    "total": "33444528128"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 16
+  }
+}
