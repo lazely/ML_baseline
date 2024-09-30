@@ -12,19 +12,16 @@ from src.models.model_utils import get_model
 from src.utils.data_loaders import get_test_loaders
 
 def run(config):
-    device = torch.device(config['training']['device'])
+    device = torch.device(config['device'])
 
     model = get_model(config).to(device)
     
     test_loader = get_test_loaders(config)
 
-    model.load_state_dict(
-        torch.load(
-            os.path.join(config['paths']['save_dir'],"best_model1.pth"),
-            map_location='cpu'
-        )
-    )
-
+    model_name = config['model']['name']
+    model_path = os.path.join(config['paths']['save_dir'], f"{model_name}_best_model.pth")
+    
+    model.load_state_dict(torch.load(model_path, map_location='cpu'))
     model.to(device)
     model.eval()
 
@@ -34,7 +31,7 @@ def run(config):
             images = images.to(device)
 
             logits = model(images)
-            logits = F.softmax(logits,dim=1)
+            logits = F.softmax(logits, dim=1)
             preds = logits.argmax(dim=1)
 
             predictions.extend(preds.cpu().detach().numpy())
@@ -44,6 +41,7 @@ def run(config):
 
     test_info['target'] = predictions
     test_info = test_info.reset_index().rename(columns={"index": "ID"})
-    test_info
-    test_info.to_csv(os.path.join(config['paths']['output_dir'],"output.csv"), index=False)
 
+    output_path = os.path.join(config['paths']['output_dir'], f"{model_name}_output.csv")
+    test_info.to_csv(output_path, index=False)
+    print(f"Test predictions saved to {output_path}")

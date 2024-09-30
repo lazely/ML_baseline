@@ -1,3 +1,4 @@
+# 하이퍼 파라미터 항목
 hyperparameter_optimization:
   n_trials: 30
   parameters:
@@ -12,24 +13,27 @@ hyperparameter_optimization:
       values: ["Adam"]
       type: "categorical"
     weight_decay:
-      min: 1e-5
-      max: 1e-5
+      min: 1e-4
+      max: 1e-4
       type: "log_uniform"
     num_epochs: 
       min: 5
       max: 20
       type: "int"
 augmentation:
-  noise: 0.5
-  blur: 0.5
+  noise: 0.0
+  blur: 0.0
 
 offline_augmentation:
   augmentation:
     flip: 1
     mask: 1
-    brightness_contrast: 1
   ratio: 2
 
 randaugment:
   num_ops: 3
   magnitude: 4
+
+ensemble:
+  type: "hard"
+  # soft / hard

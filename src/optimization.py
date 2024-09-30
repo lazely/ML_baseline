@@ -1,3 +1,6 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
 from src import train
 import optuna
 from optuna.samplers import TPESampler

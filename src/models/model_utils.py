@@ -35,12 +35,14 @@ def get_lr_scheduler(optimizer, scheduler_config):
     else:
         raise ValueError(f"Unsupported lr scheduler: {scheduler_config['name']}")
 
+# timm 라이브러리에서 모델 불러오기
 def get_model(config):
     model_config = config['model']
     num_classes = model_config['num_classes']
     
     model_config_name = model_config['name']
 
+    # 모델 간소화 시 모델 전체 이름 매핑
     model_mapping = {
         "resnet":"resnet50",
         "ViT":"vit_base_patch16_224.augreg_in21k",
@@ -52,9 +54,42 @@ def get_model(config):
         "eff7":"efficientnet_b7",
         "densenet": "densenet121"
     }
-    # model_name = model_mapping[model_config_name]
 
+    # 매핑된 모델 이름 가져오기, 없으면 원래 이름 사용
     model_name = model_mapping.get(model_config_name, model_config_name)
+
+    # 모델 생성
     model = timm.create_model(model_name, pretrained=config['model']['pretrained'], num_classes=num_classes)
 
+    return model
+
+# 앙상블 모델 불러오기
+def get_ensemble_model(config, model_name):
+    model_config = config['model']
+    num_classes = model_config['num_classes']
+
+    # 모델 간소화 시 모델 전체 이름 매핑
+    model_mapping = {
+        "resnet": "resnet50",
+        "ViT": "vit_base_patch16_224.augreg_in21k",
+        "ConvN": "convnext_base",
+        "eff3": "efficientnet_b3",
+        "eff4": "efficientnet_b4",
+        "eff5": "efficientnet_b5",
+        "eff6": "efficientnet_b6",
+        "eff7": "efficientnet_b7",
+        "densenet": "densenet121",
+        "convnext_tiny": "convnext_tiny",
+        "deit_base_patch16_224": "deit_base_patch16_224"
+    }
+
+    # 파일 이름에서 모델 이름 추출
+    model_key = model_name.split('_best_model.pth')[0]
+
+    # 매핑된 모델 이름 가져오기, 없으면 원래 이름 사용
+    timm_model_name = model_mapping.get(model_key, model_key)
+    
+    # 모델 생성
+    model = timm.create_model(timm_model_name, pretrained=config['model']['pretrained'], num_classes=num_classes)
+    
     return model

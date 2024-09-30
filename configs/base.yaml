@@ -1,12 +1,13 @@
-mode: "hyperparameter_tune"  
-# train / test / augmentation / hyperparameter_tune
+mode: "visualization"  
+# train / test / augmentation / hyperparameter_tune / ensemble / visualization
 random_seed: 20010316
 device: "cuda"
 
 wandb:
-  user_name: "jm"
+  user_name: "wj"
   team_name: "gaemanssi2-naver-ai-boostcamp"
 
 paths:
   save_dir: "./outputs/saved_models"
   output_dir: "./outputs/"
+  visualization_dir: "./outputs/saved_visualization"

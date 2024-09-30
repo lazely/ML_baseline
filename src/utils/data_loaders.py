@@ -44,7 +44,7 @@ def get_data_loaders(config: Dict[str, Any], batch_size: int = None) -> Tuple[Da
         augmented_dir=config['data']['augmented_dir'],
         augmented_info_file=config['data']['augmented_info_file'],
         transform=get_transform(config, is_train=True),
-        use_augmented=False
+        use_augmented=True
     )
     
     val_dataset = CustomDataset(

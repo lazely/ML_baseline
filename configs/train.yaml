@@ -4,7 +4,7 @@ training:
   num_epochs: 50
   additional_train: True
   additional_epochs: 5
-  learning_rate: 0.0001939044801896184
+  learning_rate: 0.0001
   n_splits: 3
 
   metric: "accuracy"
@@ -26,7 +26,10 @@ training:
     evidence: 'loss'
     monitor: 'metric'
 
+  pseudo_labeling : False
+  confidence_threshold: 0.8
+  interval : 5
 model:
-  name: "resnet"
+  name: "eff4"
   pretrained: True
   num_classes: 1000

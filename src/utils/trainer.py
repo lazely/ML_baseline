@@ -12,6 +12,10 @@ def train_one_epoch(model, dataloader, criterion, optimizer, device, metric_fn):
         inputs, labels = batch
         inputs, labels = inputs.to(device), labels.to(device)
 
+        valid_mask = labels != -1
+        if not valid_mask.any():
+            continue  # 유효한 샘플이 없으면 이 배치를 건너뜁니다
+            
         optimizer.zero_grad()
         outputs = model(inputs)
         
